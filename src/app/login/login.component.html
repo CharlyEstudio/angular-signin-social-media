@@ -1,0 +1,43 @@
+<div class="container login">
+  <div class="row">
+    <div class="col-7 login__description center vh-100">
+      <img src="../../assets/svg/login.svg" alt="Tareas">
+      <h2 class="mt-3"><span>todo</span>Tasks</h2>
+      <p>Task Management System</p>
+    </div>
+    <div class="col-3 center vh-100">
+      <form novalidate class="needs-validation" [formGroup]="formSignIn" (ngSubmit)="signIn()">
+        <div class="mb-3">
+          <label for="validationEmail" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <input type="text" class="form-control" formControlName="email" id="validationEmail" required autocomplete>
+            <div class="text-danger" *ngIf="formSignIn.controls.email?.errors?.email">
+              Please enter a valid email.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" (ngModelChange)="onChange()" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" formControlName="remember" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Remember</label>
+        </div>
+        <p *ngIf="inavlid" class="text-danger">You must enter all the data.</p>
+        <!--<a class="login__google" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <img src="assets/png/google.png" alt="Google" />
+        </a>-->
+        <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+        <div class="login__google">
+          <button type="submit" class="btn btn-primary">SignIn</button>
+          <div id="my-signin2"></div>
+        </div>
+      </form>
+    </div>
+    <div class="col-2 login__vertical">
+      <div class="login__vertical__background"></div>
+    </div>
+  </div>
+</div>
+<app-google></app-google>

@@ -1,0 +1,19 @@
+.home {
+  height: calc(100vh - 56px);
+  display: flex;
+  // justify-content: space-around;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    max-height: 200px;
+  }
+
+  &__image {
+    padding: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+}

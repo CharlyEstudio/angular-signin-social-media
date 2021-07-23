@@ -1,0 +1,56 @@
+<div class="row  task">
+  <div class="col-6 task__image center">
+    <img src="./assets/svg/task.svg" alt="Task" />
+  </div>
+  <div class="col-6 center">
+    <div class="card" style="width: 18rem;" *ngIf="!update && !new">
+      <div class="card-body">
+        <h5 class="card-title">#{{task.id}} - Task {{task.task}}</h5>
+        <div class="form-check form-switch">
+          <input class="form-check-input" (ngModelChange)="finish($event)" [(ngModel)]="task.finished" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Finished?</label>
+          <p class="text-danger" *ngIf="message !== ''">{{message}}</p>
+        </div>
+        <p class="card-text">Created At {{task.createdAt}}</p>
+        <p class="card-text">Updated At {{task.updatedAt}}</p>
+        <a (click)="goBack()" class="btn btn-primary">Go Back</a>
+        <a (click)="updated()" class="btn btn-secondary ms-3">Updated</a>
+        <a (click)="deleted()" class="btn btn-danger ms-3">Delete</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;" *ngIf="update && !new">
+      <div class="card-body">
+        <form novalidate class="needs-validation" [formGroup]="formUpdate">
+          <div class="mb-3">
+            <label for="updateTask" class="form-label">Task</label>
+            <div class="input-group has-validation">
+              <textarea type="text" class="form-control" formControlName="task" id="updateTask" required></textarea>
+              <div class="text-danger" *ngIf="formUpdate.controls.task?.errors?.task">
+                Min length 3 charters.
+              </div>
+            </div>
+          </div>
+          <a (click)="updateTask()" class="btn btn-primary">Update</a>
+          <a (click)="cancel()" class="btn btn-danger ms-3">Cancel</a>
+        </form>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;" *ngIf="!update && new">
+      <div class="card-body">
+        <form novalidate class="needs-validation" [formGroup]="formUpdate">
+          <div class="mb-3">
+            <label for="newTask" class="form-label">New Task</label>
+            <div class="input-group has-validation">
+              <textarea type="text" class="form-control" (ngModelChange)="onChangeInput()" formControlName="task" id="newTask" required></textarea>
+            </div>
+            <div class="text-danger" *ngIf="formUpdate.controls.task?.errors?.required || invalid > 0">
+              Min length 3 charters.
+            </div>
+          </div>
+          <a (click)="createdTask()" class="btn btn-primary">Crear</a>
+          <a (click)="goBack()" class="btn btn-danger ms-3">Go Back</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

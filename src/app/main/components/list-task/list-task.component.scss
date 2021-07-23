@@ -1,0 +1,31 @@
+.list-task {
+  width: 18rem;
+  height: 18rem;
+
+  &__cabecera {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &__list {
+    overflow: auto;
+    height: 18rem;
+  }
+}
+
+.list-task__list::-webkit-scrollbar {
+  width: 5px;     /* Tamaño del scroll en vertical */
+  height: 2px;    /* Tamaño del scroll en horizontal */
+  // display: none;  /* Ocultar scroll */
+}
+
+.list-task__list::-webkit-scrollbar-thumb {
+  background: #6c63ff;
+  border-radius: 4px;
+}

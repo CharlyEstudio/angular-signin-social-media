@@ -1,0 +1,11 @@
+.task {
+  height: calc(100vh - 56px);
+
+  &__image {
+    padding: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
