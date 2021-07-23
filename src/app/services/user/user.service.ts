@@ -17,6 +17,7 @@ import {SignInModel} from './models/signInModel';
  * */
 import {ApiService} from '../../api/api.service';
 import {StorageService} from '../storage/storage.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +46,8 @@ export class UserService {
     return new Promise(resolve => {
       gapi.load('auth2', () => {
         this.auth2 = gapi.auth2.init({
-          client_id: '1030961734562-oia45hn99ure5r2b3rrojvvo0iustitu.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
+          client_id: environment.clientIdGoogle,
+          cookiepolicy: environment.cookiepolicyGoogle,
         });
 
         resolve();
